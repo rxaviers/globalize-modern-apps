@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="600"
+   height="500"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.48.4 r9939"
+   sodipodi:docname="globalize-layers-5.svg">
+  <defs
+     id="defs4" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.4142136"
+     inkscape:cx="324.45478"
+     inkscape:cy="242.44173"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1920"
+     inkscape:window-height="1056"
+     inkscape:window-x="0"
+     inkscape:window-y="24"
+     inkscape:window-maximized="1"
+     showguides="true"
+     inkscape:guide-bbox="true" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-552.36218)">
+    <g
+       id="g4492"
+       transform="translate(-16.381809,0)">
+      <rect
+         style="color:#000000;fill:#98b4a0;fill-opacity:1;fill-rule:nonzero;stroke:#416b4d;stroke-width:4;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+         id="rect4380"
+         width="467.84381"
+         height="36.435608"
+         x="130.78313"
+         y="941.47687" />
+      <text
+         xml:space="preserve"
+         style="font-size:34.03578949px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         x="315.95651"
+         y="1047.1194"
+         id="text3782"
+         sodipodi:linespacing="125%"><tspan
+           sodipodi:role="line"
+           id="tspan3784"
+           x="315.95651"
+           y="1047.1194"
+           style="font-style:italic;font-variant:normal;font-weight:600;font-stretch:normal;fill:#41586b;fill-opacity:1;font-family:Klavika;-inkscape-font-specification:Klavika Semi-Bold Italic">Globalize 1.x</tspan></text>
+      <rect
+         y="897.97687"
+         x="130.78313"
+         height="30.349821"
+         width="334.68738"
+         id="rect3802"
+         style="color:#000000;fill:#98a9b4;fill-opacity:1;fill-rule:nonzero;stroke:#41586b;stroke-width:4;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
+      <text
+         sodipodi:linespacing="125%"
+         id="text3755"
+         y="1047.1194"
+         x="194.62653"
+         style="font-size:34.03578949px;font-style:italic;font-variant:normal;font-weight:600;font-stretch:normal;text-indent:0;text-align:start;text-decoration:none;line-height:125%;letter-spacing:0px;word-spacing:0px;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:start;baseline-shift:baseline;color:#000000;fill:#ff6600;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:Klavika;-inkscape-font-specification:Klavika Semi-Bold Italic"
+         xml:space="preserve"><tspan
+           style="font-size:34.03578949px;font-style:italic;font-variant:normal;font-weight:600;font-stretch:normal;text-indent:0;text-align:start;text-decoration:none;line-height:125%;letter-spacing:0px;word-spacing:0px;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:start;baseline-shift:baseline;color:#000000;fill:#037400;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:Klavika;-inkscape-font-specification:Klavika Semi-Bold Italic"
+           y="1047.1194"
+           x="194.62653"
+           id="tspan3757"
+           sodipodi:role="line">cldrjs</tspan></text>
+      <text
+         sodipodi:linespacing="125%"
+         id="text3798"
+         y="881.64716"
+         x="414.68246"
+         style="font-size:34.03578949px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         xml:space="preserve"><tspan
+           style="font-style:italic;font-variant:normal;font-weight:600;font-stretch:normal;fill:#41586b;fill-opacity:1;font-family:Klavika;-inkscape-font-specification:Klavika Semi-Bold Italic"
+           y="881.64716"
+           x="414.68246"
+           id="tspan3800"
+           sodipodi:role="line">...</tspan></text>
+      <g
+         transform="translate(44,-8)"
+         id="g4194">
+        <rect
+           style="color:#000000;fill:#98a9b4;fill-opacity:1;fill-rule:nonzero;stroke:#41586b;stroke-width:4;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+           id="rect3804"
+           width="79.687393"
+           height="271.43561"
+           x="277.78314"
+           y="619.47687" />
+        <text
+           sodipodi:linespacing="125%"
+           id="text3794"
+           y="325.43805"
+           x="-867.49097"
+           style="font-size:34.03578949px;font-style:italic;font-variant:normal;font-weight:600;font-stretch:normal;text-indent:0;text-align:start;text-decoration:none;line-height:125%;letter-spacing:0px;word-spacing:0px;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:start;baseline-shift:baseline;color:#000000;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:Klavika;-inkscape-font-specification:Klavika Semi-Bold Italic"
+           xml:space="preserve"
+           transform="matrix(0,-1,1,0,0,0)"><tspan
+             style="font-size:34.03578949px;font-style:italic;font-variant:normal;font-weight:600;font-stretch:normal;text-indent:0;text-align:start;text-decoration:none;line-height:125%;letter-spacing:0px;word-spacing:0px;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:start;baseline-shift:baseline;color:#000000;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:Klavika;-inkscape-font-specification:Klavika Semi-Bold Italic"
+             y="325.43805"
+             x="-867.49097"
+             id="tspan3796"
+             sodipodi:role="line">Message</tspan></text>
+      </g>
+      <g
+         transform="translate(44,-8)"
+         id="g4147">
+        <rect
+           y="619.47687"
+           x="182.28313"
+           height="271.43561"
+           width="79.687393"
+           id="rect3808"
+           style="color:#000000;fill:#98a9b4;fill-opacity:1;fill-rule:nonzero;stroke:#41586b;stroke-width:4;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
+        <text
+           xml:space="preserve"
+           style="font-size:34.03578949px;font-style:italic;font-variant:normal;font-weight:600;font-stretch:normal;text-indent:0;text-align:start;text-decoration:none;line-height:125%;letter-spacing:0px;word-spacing:0px;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:start;baseline-shift:baseline;color:#000000;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:Klavika;-inkscape-font-specification:Klavika Semi-Bold Italic"
+           x="-867.93347"
+           y="231.6143"
+           id="text3790"
+           sodipodi:linespacing="125%"
+           transform="matrix(0,-1,1,0,0,0)"><tspan
+             sodipodi:role="line"
+             id="tspan3792"
+             x="-867.93347"
+             y="231.6143"
+             style="font-size:34.03578949px;font-style:italic;font-variant:normal;font-weight:600;font-stretch:normal;text-indent:0;text-align:start;text-decoration:none;line-height:125%;letter-spacing:0px;word-spacing:0px;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:start;baseline-shift:baseline;color:#000000;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:Klavika;-inkscape-font-specification:Klavika Semi-Bold Italic">Number</tspan></text>
+      </g>
+      <g
+         transform="translate(44,-8)"
+         id="g4189">
+        <rect
+           style="color:#000000;fill:#98a9b4;fill-opacity:1;stroke:#41586b;stroke-width:4;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+           id="rect3810"
+           width="79.687393"
+           height="271.43561"
+           x="86.783127"
+           y="619.47687" />
+        <text
+           sodipodi:linespacing="125%"
+           id="text3786"
+           y="137.79057"
+           x="-867.93347"
+           style="font-size:34.03578949px;font-style:italic;font-variant:normal;font-weight:600;font-stretch:normal;text-indent:0;text-align:start;text-decoration:none;line-height:125%;letter-spacing:0px;word-spacing:0px;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:start;baseline-shift:baseline;color:#000000;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:Klavika;-inkscape-font-specification:Klavika Semi-Bold Italic"
+           xml:space="preserve"
+           transform="matrix(0,-1,1,0,0,0)"><tspan
+             style="font-size:34.03578949px;font-style:italic;font-variant:normal;font-weight:600;font-stretch:normal;text-indent:0;text-align:start;text-decoration:none;line-height:125%;letter-spacing:0px;word-spacing:0px;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:start;baseline-shift:baseline;color:#000000;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:Klavika;-inkscape-font-specification:Klavika Semi-Bold Italic"
+             y="137.79057"
+             x="-867.93347"
+             id="tspan3788"
+             sodipodi:role="line">Date</tspan></text>
+      </g>
+      <g
+         id="g4298"
+         transform="translate(-52.646447,87.000002)">
+        <rect
+           y="524.47687"
+           x="86.783127"
+           height="366.43561"
+           width="79.687393"
+           id="rect4300"
+           style="color:#000000;fill:#b49898;fill-opacity:1;stroke:#6b4141;stroke-width:4;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
+        <text
+           transform="matrix(0,-1,1,0,0,0)"
+           xml:space="preserve"
+           style="font-size:34.03578949px;font-style:italic;font-variant:normal;font-weight:600;font-stretch:normal;text-indent:0;text-align:start;text-decoration:none;line-height:125%;letter-spacing:0px;word-spacing:0px;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:start;baseline-shift:baseline;color:#000000;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:Klavika;-inkscape-font-specification:Klavika Semi-Bold Italic"
+           x="-867.93347"
+           y="137.79057"
+           id="text4302"
+           sodipodi:linespacing="125%"><tspan
+             sodipodi:role="line"
+             id="tspan4304"
+             x="-867.93347"
+             y="137.79057"
+             style="font-size:34.03578949px;font-style:italic;font-variant:normal;font-weight:600;font-stretch:normal;text-indent:0;text-align:start;text-decoration:none;line-height:125%;letter-spacing:0px;word-spacing:0px;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:start;baseline-shift:baseline;color:#000000;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:Klavika;-inkscape-font-specification:Klavika Semi-Bold Italic">CLDR</tspan></text>
+      </g>
+      <g
+         id="g4435"
+         transform="translate(204.51324,37.414213)">
+        <rect
+           y="576.34338"
+           x="277.78314"
+           height="314.56912"
+           width="79.687378"
+           id="rect4437"
+           style="color:#000000;fill:#b3b498;fill-opacity:1;fill-rule:nonzero;stroke:#646b41;stroke-width:4;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
+        <text
+           transform="matrix(0,-1,1,0,0,0)"
+           xml:space="preserve"
+           style="font-size:34.03578949px;font-style:italic;font-variant:normal;font-weight:600;font-stretch:normal;text-indent:0;text-align:start;text-decoration:none;line-height:125%;letter-spacing:0px;word-spacing:0px;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:start;baseline-shift:baseline;color:#000000;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:Klavika;-inkscape-font-specification:Klavika Semi-Bold Italic"
+           x="-867.49097"
+           y="325.43805"
+           id="text4439"
+           sodipodi:linespacing="125%"><tspan
+             sodipodi:role="line"
+             id="tspan4441"
+             x="-867.49097"
+             y="325.43805"
+             style="font-size:34.03578949px;font-style:italic;font-variant:normal;font-weight:600;font-stretch:normal;text-indent:0;text-align:start;text-decoration:none;line-height:125%;letter-spacing:0px;word-spacing:0px;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:start;baseline-shift:baseline;color:#000000;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:Klavika;-inkscape-font-specification:Klavika Semi-Bold Italic">Your i18n library</tspan></text>
+      </g>
+      <text
+         xml:space="preserve"
+         style="font-size:34.03578949px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         x="569.6825"
+         y="928.14716"
+         id="text4460"
+         sodipodi:linespacing="125%"><tspan
+           sodipodi:role="line"
+           id="tspan4462"
+           x="569.6825"
+           y="928.14716"
+           style="font-style:italic;font-variant:normal;font-weight:600;font-stretch:normal;fill:#41586b;fill-opacity:1;font-family:Klavika;-inkscape-font-specification:Klavika Semi-Bold Italic">...</tspan></text>
+    </g>
+  </g>
+</svg>
