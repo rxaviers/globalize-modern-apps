@@ -1,375 +1,269 @@
 ### Intro
 
-
 Hello everyone,
 
-Thanks for having me. In this talk, I'm going to tell you about the biggest
-problem web developers had using Globalize. How we managed to fix it and how
-this can help everyone.
-
-The first question you may have is what the heck is Globalize. It's the
-globalization library we maintain at jQuery.
-
-jQuery is very popular for its core project create by John Resig that made web
-development simple and reliable in the dark era of browsers. Developers could
-use the magical dollar sign and not worry about compatibility anymore.
-
-It happens that we have other projects as well, which are all under the same
-jQuery foundation umbrella. A really quick intro. UI, which holds a curated set
-of user interface components and is famous for its calendar widget: datepicker.
-Mobile, which extends UI with responsiveness and accessibility for smartphone
-and tablet devices. QUnit, which is a testing framework, we happen to use it
-ourselves to test our projects. Sizzle, the CSS selector engine inlcuded in
-jQuery. and Globalize, which is where I am.
+Thanks for having me. It's a pleasure to be here again. My name is Rafael
+Xavier, I'm the project lead for Globalize, which is one of the jQuery
+Foundation projects, specifically the one about internationalization.
+
+I'm also part of the ECMA-402 working group, which is the web specification
+thing, alongside with Steven Loomis and John Emmons which are here at the
+conference.
+
+I've also made a couple of other related but smaller things, like having created the
+mailing list that today is ECMA-402 official discussion list and created JavaScript
+libraries for making it easier to develop using CLDR.
+
+~~~ Why is internationalization important?
+
+Skipped due to be among globalization experts...
+
+~~~ What is it about?
+
+Skipped too...
+
+When I talk to developers in general they think it's about translations to
+non-English languages, which is true but not in its entirety. So, I argue that
+i18n is about "talking" in general, it's about making machine language
+understandable for humans. Every applicaion at some point has to "talk" to its
+users (I hope). This is, to display information to them, i.e., messages that may
+require pluralization support, gender inflection, date formatting, number
+formatting, currency formatting, etc. Even in English, it might be tricky to get
+that done properly.
+
+### Application
+
+~~~ ICU
+~~~ (stop) Application using crazy regexps to format them
+
+On programming languages like C, C++, Java and others we have ICU. But, on JavaScript
+we have (crazy regexps)... I wasn't convinced by this answer and keep trying
+until I found...
+
+### Develop using Intl
+
+~~~ Application using Intl
+
+... we have Intl, which is the browsers' native API. As of today, it supports
+number formatting, currency formatting, date formatting, and collation. It's
+exactly what we are looking for, a function that we can call and pass the
+locales that we want support for and say what we want displayed and it just do
+the right thing for us.
+
+~~~ Intl.NumberFormat
+~~~ Intl.DateTimeFormat
+~~~ Intl.Collator
+
+IE/Edge      Firefor  Chrome  Safari   Opera        Android Browser   Node.js
+Yes IE>=11   Yes      Yes     No       Yes          >=4.4             Yes
+                              No iOS   But mobile                     *English only by default
+
+Intl would be perfect if it wasn't for some problems. The drawbacks of using
+native Intl as of today are:
+
+Limited browser support: it isn't supported on all browsers and environments.
+According to GlobalStats, Intl is supported for 67.82% of the global users,
+which is a decent coverage. But, it also means it leaves 1/3 behind - including
+iOS users which is pretty significant. Intl is supported on Node.js because of
+the great work done by Steven Loomis. The only restriction is that Intl comes
+with support for English only by default. If you need different locales, you
+need to re-compile it.
+
+Beyond browser support, another drawback is reduced functionalities. There are
+functionalities NOT supported by Intl at all, they have NOT even been
+specified. Common missing ones are message formatting, relative time formatting,
+unit formatting, abbreviation; and even text segmentation, address formatting,
+postal codes, phone formatting, and timezones.
+
+ECMA-402 2nd edition is supposed to bring some new functionalities in. For example,
+there's a draft made by Caridy, from Yahoo, for plural forms. But, it's hard to
+say when all those missing functionalities are going to become part of the
+specification and then be implemented and supported by the browsers.
+
+~~~ MessageFormat
+~~~ - Pluralization
+~~~ - Gender Inflection
+~~~ RelativeTime
+~~~ UnitFormat
+~~~ Abbreviation
+~~~ Text Segmentation
+extra
+~~~ Address Format
+~~~ Postal Codes
+~~~ Phone Format
+~~~ Timezones
+
+### JavaScript libraries
+
+To fill in the gap there are JavaScript libraries and here is where the fun
+begins.
+
+Each library has its own strenghts and weakness, which I and the lead developer of
+several other projects tried to summarize in this link. Feel free to explore it
+and pick the one the best suite your needs.
+
+Today, I want to share with you some of the experience I had during this time
+leading Globalize where I had to opportunity to discuss this topic with several
+smart engineers from various different companies including a team at Twitter.
+
+~~~ 1st CLDR as a peer dependency
+~~~ - wrong data issue -> Ideal: resource loading + cldr as peer dependency.
+
+Differently from Intl, where the implementation is already in the client, using
+JavaScript library applicaions have to provide that support, they have to ship
+that support to the client if it's a client-side application. Directly or
+indirectly it has to ship i18n data.
+
+Thanks to Unicode we have CLDR. But as we know, CLDR in its full form is very
+large, especially for client side applicaions, (hundreds of MB) which means
+that no JavaScript library includes it in its entirety. Usually, they specify
+what data they need for their supported features and allow applications to
+cherry-pick that data from the locales they need.
+
+Some libraries choose to ship a preprocessed mix of data and code for each of
+its supported locales, so we can include it in a script tag and use it. Its file
+structure looks something like this and is usually: version X of the library
+has version Y of the data, whenever there's new data available, a new library
+release must happen, so the updates are made available to the end user. If
+developer finds a problem with the data, he needs to patch the library. As soon
+as a new update pops up and he downloads it. He loses his previous fixes. Unless
+he keeps a list of patches that he can re-apply over and over and, hopefully,
+not get any conflicts while doing so. It's a nightmare for maintenance point of
+view.
+
+~~~ package.json w/ cldr-data
+
+Instead of that we believe a better approach is having library code
+completely separate from i18n data. Data should be a peer-dependency of the
+library as simple as that.
+
+cldr-data is a module for npm and bower that holds the official CLDR in the JSON
+format.
+
+~~~ 2nd declarative code
 
-My name is Rafael Xavier and I'm Globalize project lead.
-
-So, enough introduction, what happened to Globalize?
-
-
-### Problem maintenance
-
-
-Everything starts here. Suppose we, web developers, are creating this simple web
-application that needs globalization support. What do we do? Simple. We include
-libraries that allows us to do so and job's done.
-
-I'm using a simple message format as an example. Everything looks fantastic.
-Until we go show our amazing progress to our boss and he says: THIS IS WRONG...
-
-When that happens (when we spot a bug) well, we get the chance to know our
-libraries a little better. Anyway we don't have much choice other than either
-(a) figure out what's wrong and fix it, or (b) file a bug.
-
-On Globalize, we had a bunch of bugs. Interestingly, one third have all the same
-root cause. (No, it's not Internet Explorer this time), which is i18n content,
-or more precisely, having wrong or outdated i18n content embedded into our code.
-For example, a wrong month name or wrong day name. This bug affects all sorts of
-locales and all sorts of functionalities. The list goes on and on. Reviewing
-those bugs was really tricky, because we at jQuery know JavaScript. But, we know
-nothing about other languages.
-
-At some point, the reviewing process was to look & use what's in CLDR. So, why
-not replace our database to use CLDR instead? This is when I got first
-introduced to Globalize. By that time, this bug was opened for 8 months and it
-wasn't one, but two big issues we were trying to solve: (a) we were managing the
-content ourselves, and (b) the source initially chosen, which was .NET, turned
-out to have big problems.
-
-When I was first digging into this bug, discovering what CLDR was and how we
-could change Globalize to use it, my initial concern was how that change would
-affect our locale coverage and our current functionality. But, for my happiness
-I figured that by adopting it, we would actually double the locale coverage and
-we would also fix all the functionality issues we had so far. It was simply
-amazing.
-
-Ok! In order to address that whole bunch of bugs at once, we are convinced to
-rewrite the whole library to conform with CLDR (with TR#35). But, we are also
-convinced we have a second challange to solve, embedded content. Or tomorrow,
-we'd end up with unhappy developers again complaining about outdated CLDR or
-wrong CLDR. We didnt want to simply rename our problem. But, we wanted so solve
-it.
-
-Before creating something new. Let's research. What about other libraries? After
-all, we are not alone in the world. Do they have this problem? If not, how do
-they solve it?
-
-Let's start with twitter-cldr. It's based on CLDR obviously as its name
-suggests. But, it embeds CLDR data in the code as we unfortunately did as well.
-Do they get the same sorta bugs we had? Let's see an example. Developer filed a
-bug about wrong date formatting in the Italian language, which has been fixed in
-CLDR 26. But, hasn't been fixed in twitter-cldr yet. To give a rough idea of the
-timeline we're talking about, after 43 days since developer has first reported
-this bug, it was fixed and published by CLDR. Today, it's been 91 days. The bug
-is still opened.
-
-Next, angular.js. It's based on CLDR. Actually, it pulls data in from Google
-Closure, which in turn is based on CLDR. Looking its master code today, it
-presents the same Italian bug we just saw.
-
-Here, I've picked one existing bug as an example. But, there are more, an easy
-way to find them is by looking at CLDR changelogs.
-
-Not to mention the bugs that are still open on CLDR. For example, the plural one
-I used as an example earlier on. It seems so basic. But, it's real and it
-happens today on CLDR 26. But, for the Brazillian Portuguese language.
-
-The surprising fact is that all the mainstream globalization libraries for
-JavaScript run into the same problems as we, jQuery, have.
-
-What usually happens is that we, again speaking as a developer, cannot wait
-indefinitely for those bugs to get fixed and land upstream ~~boss yelling~~.
-Occasionally, we fix them locally. Yay.
-
-[VIDEO flat tire]
-
-Is it ideal? Some people may say it works for me.
-
-Although, keeping a local custom modified library has its drawbacks. As soon as
-a new update pops up and we download it. We lose our previous fixes. Unless we
-keep a list of patches that we can re-apply over and over and, hopefully, not
-get any conflicts while doing so.
-
-This is definitely not a good maintenance perspective over time. So, what could
-be done instead? At Globalize, we thought a solution should cover three simple
-points:
-
-
-### Solution brief
-
-
-1. It should leverage the official CLDR JSON. Because, (a) processing JSON on
-JavaScript is lighter. (b) It's distributed by Unicode. It's official.
-
-We believe developer should be able to say: "Globalize (or google Closure,
-format.js), here is my CLDR data, use it".
-
-2. (Next) It should allow developers to load as much or as little data as they
-need.
-
-For example, when formatting numbers, we don't need the plural rules obviously.
-We don't even need lots of the number fields themselves. It depends on a case by
-case basis.
-
-3. Avoid duplicating data between libraries.
-
-If a developer uses two number libraries, one for formatting and another for
-parsing. For example, ecma-402 polyfil and Globalize. Both should be able to use
-the same shared number data.
-
-The intriguing question is: if this is so good and obvious, why hasn't anyone
-done this yet?
-
-I don't know the answer to this question. But, there's one fact I haven't
-mentioned yet. The first appearance of a CLDR in the JSON format actually
-happened on CLDR v23, which happened on 2013. And, by that time all these
-libraries already existed. So, all have an excuse. But, no more.
-
-
-### Globlize 1.x
-
-
-Welcome to the new Globalize. It has been rewritten to address all the previous
-three points. It's designed to work both in the browser and in Node.js. At
-jQuery, we systematically test it against desktop and mobile browsers. <which>?
-
-Support AMD and CommonJS module loaders.
-
-On the rewrite, we've split the former monolithic library into individual
-modules. On date module, we find date formating/parsing. On number module, we
-find number formating/parsing. And, so on... All the functional verticals lie
-onto the Globalize core, which works as a base layer. Note we have no more
-content embedded into our library. The CLDR content is treated as a peer
-dependency. Also, note that throughout the Globalize code, we manipulate CLDR:
-we instantiate locales, we traverse CLDR paths. Some of these operations are not
-that trivial <likelySubtags example?>. Therefore, we've wrapped that code into
-cldr.js. So, we (a) keep Globalize focused on the i18n functions only, (b) allow
-other libraries to scaffold and build themselves on top of the same foundation
-we do. ~~layers topology~~
-
-
-### cldr.js
-
-
-Cldr.js is a low level library, whose only purpose is to help to manipulate
-CLDR. So, it's really cool to develop your i18n library not needing to worry
-about that.
-
-Like Globalize, it's designed to work both in the browser, or in Node.js.
-
-Support AMD and CommonJS.
-
-It's unopiniated on how user should load CLDR data. There are dozen of ways. All
-we expect is the JSON. So, developer can fetch the data dynamically if he will.
-He can use AMD plugins. Node.js require. Or any imaginable way.
-
-Globalize uses Cldrjs load method under the hoods, so Globalize works the same
-way.
-
-It automatically deduces subtags using CLDR algorithms specified by CLDR
-docs. These variables then are automatically used when traversing the tree to
-get an item.
-
-Those are the most important features, but there are more.
-
-
-### cldr-data
-
-
-We've talked about the benefits of having CLDR as a separate thing. But, this
-approach inevitably introduces one extra step for developers: to download the
-CLDR data themselves. Who likes extra steps?
-
-How can we ease this initial ramp up? More importantly, how does developer know
-he has the right CLDR version compatible with the libraries he's using?
-
-Libraries need a way to declare its CLDR peer dependency.
-
-We at jQuery use bower and npm to manage our library dependencies. We asked
-ourselves: Can we use this same tools to manage CLDR peer dependency as well?
-
-Yes, we created a package called `cldr-data` for both: npm and bower. It works 
-the lightest possible way we could imagine it. It doesn't actually mirror any
-data. But, it manages the zip urls, and as a post-processing step it downloads
-the right link and unpack it.
-
-If you develop a globalization library, or plan to, consider scaffolding it on
-top of cldr.js and cldr-data.
-
-
-### Back to globalize: usage
-
-
-Let's start to see some action. The demo I'm about to show you is going to do
-three things: (a) fetch globalize, (b) fetch cldr data in the json format and
-(c) run some Globalize code on Node.js.
-
-We can use npm to install all that. If you are not familiar with npm, it's the
-Node.js package manager and is commonly used by Node developers. Installing
-globalize also installs its both dependencies: cldrjs (the base library) and
-cldr-data (the node module that pulls in the CLDR data in the json format from
-the Unicode servers)
-
-We're all set. Let's use Globalize. Start using right ahead makes it complain
-about missing CLDR data. We developers need to feed Globalize with the proper
-CLDR JSON files. Here, I'm using cldr-data package. It's optional. We pass in
-only the content we need. Oh, but which ones do we need? If you need help
-figuring it out, see the table in our docs. Then, use it.
-
-Let me show you how easy it is to manage the CLDR content. User/Developer has
-the POWER.
-
-This gives the same italian bug as twitter-cldr or angular.js do. Do you want to
-fix it and move to the next level? Yes.
-
-Tchara! Fixed!
-
-Do you remember the Brazillian Portuguese plural bug, which is currently present
-on CLDR 26? Let's reproduce and fix it? In Brazillian Portuguese, the plural
-form of 0 is not other, but one. There's no CLDR 27 yet. But, let's set the
-right rules ourselves and retry. Tchara! Fixed! Note, we were able to fix it
-dynamically on user code.
-
-((((On a server application using Node.js, we can `npm install globalize` or
-have it properly declared in a `package.json` file. It will fetch the latest
-cldr data that satisfies our dependencies, which in this case is CLDR v26. If we
-add another library that also use cldr-data as a peer dependency, npm will
-resolve the CLDR version that works both. If we explicitly want to constrain the
-data at an specific version, for example CLDR v25 for any unkown reason.
-Perhaps, because we liked Italian to be bugged. Anyway, we declare cldr-data's
-version in our application package.  Then, format numbers, dates, messages or
-parse them as you wish.))))
-
-The same thing works on browsers as well. We can use bower package manager,
-which is commonly used on client applications.
-
-Please, find examples using these various environments (bower, AMD or node.js)
-in Globalize docs.
-
-
-### Back to globalize: performance optimization
-
-
-(((tunings)))
-
-(((We've talked about the benefits of having CLDR as a separate thing and how
-easy it is to use cldr-data to fetch the correct data for your app. But,)))
-
-What about performance? I'm advocating a library that traverses the CLDR tree
-and parse rules dynamically at runtime, which is totally fine during
-development. But, what about production? Is there any optimization?
-
-When formatting a number, there's actually a two step process: (a) setup and (b) execution, where setup
-takes considerably more time (is a lot more expensive than execution). The
-runtime difference is an order of magnitude.
-
-Note that the same is also true for date formatting, message formatting, or even
-parsing all of them.
-
-So, an obvious way to speed up iterations in your code is to generate the
-formatter outside the loop. The same idea is valid for server applications, we
-probably want our formatters to be created in advance, so when requests arrive,
-we can process them quickly by simply executing the formatter. Obviously, this
-is a simple demonstration. Usually, an ICU Message Format goes here instead in a
-real world application, a number format would be an input for a templating
-engine like mustache, handlebars. But, all follows the same idea.
-
-Another distinction between the setup and execution is that all CLDR
-manipulation happens during setup, which can be really handy. For example, any
-missing CLDR error will be thrown as soon as the server is started in this
-example. So, all subsequent client requests are safe from any CLDR manipulation
-error.
-
-
-### Back to globalize: size optimization
-
-
-Let's talk a bit about client application. On client side, performance is also
-about how fast our page loads. So, size matters. How to get the smallest and
-leanest bundle for production?
-
-Let's see an example. Suppose we need a plural function for English. This is
-what we need. A function that given a number, outputs the plural form. But, in
-order to get that, we need the English plural rules and the library code to
-parse that rules in order to generate this simple function. In the end, this
-tiny thing is what matters. What if we could precompile that at build time and
-deploy only this tiny function. The good news is that it's possible. All our
-formatters/parsers output the precompiled function. So, by managing that at
-build time, we can remove the need for most of the library at runtime.
-
-The plural function is an extreme example. But, we often can save bytes
-formatting or parsing other stuff too.
-
-If you are familiar with templating engines like Handlebars, the idea of
-deploying precompiled bundles may sound familiar.
-
-
-### Foundation
-
-
-You know, what's most important about this whole story is that we didn't do it
-all ourselves. We've been systematically collecting feedback on every aspects of
-our idea and our implemention. Part of the solution is contribution from
-Wikipedia, part from Alex Sexton, part from people all over the internet.
-
-The jQuery foundation has a mission that goes beyond supporting the development
-of our products. It's about supporting three things.
-
-Improve the open web, which means, having open standards publicly available and
-free to implement. ~~An open web~~
-
-Make web accessible for everyone, it means including people with disabilities
-and people living in poor conditions. ~~An accessible web~~
-
-And, ~~Collaboration with the development community~~.
-
-
-### The JavaScript Globalization community
-
-
-"One thing that really struck me during my limited research was how many
-overlapping libraries there are especially for number and date-time formatting"
-
-Norbert Lindenberg, the creator of ECMA-402 (the standard Internationalization
-API for JavaScript) said an year ago. It happens this is still true.
-
-We have been in contact with lots of people in different organizations. As an
-effort of improving the coordination and potentially the collaboration between
-projects, we've created a common channel for communication. Hopefully, with the
-joint effort of this group, we'll make this whole farm more productive.
-
-It's a very recent initiative. But, it's already been used for annoucements of
-new accomplishments and we're collaboratively producing a comparison grid to
-help clarify the differences, the gaps, the strenghts and weekness of each
-different projects.
-
-
-### Thank you
-
-
-All libraries that I've showed are functional. They work. So, feel free to use
-it. I hope you enjoy it. File bugs if you find any trouble. We really listen to
-what you say. Help us to design, implement, and test it. Collaborate with us.
-Join us.
-
-Thank you
+We made Globalize to be really flexible, to be modular, to work in several
+different environments, and to allow developers to control data loading, which
+requires an imperative programming like in this example: require the modules you
+need, load the data, set the locale, then use the library. But, most of it can
+be usually automated. So, developer has a declarative programming experience like
+he does using Intl, which is just use the library. By no means the idea is to
+drop the original Globalize flexibility, but we suggest how to configure tools
+like webpack to provide such automation.
+
+The end goal is to make usage easier.
+
+~~~ 3rd performance -> Runtime modules
+~~~ - Large in its full form -> ideal: minimum set of code, minimum set of data.
+
+Finally, being only easy to use on development is worthless if the final product
+is bad. So, we've also managed to avoid performance impacts. There are two major
+contributing factors for performance here.
+
+One is load performance, which is especially important for client side applications
+where you have to ship code. As I mentioned earlier, the data is considerably
+large and even the small slices that libraries make may include a lot of data
+that your application won't need. For example, a currency formatter includes all
+currency codes for a certain locale. If your application uses US Dollars only,
+all other loaded currency data is unnecessary. Similarly, a date formatter
+includes all the localized translation names in several lengths (e.g.,
+"January", "Jan", "J"). If your application displays dates using numeric form
+only, all the loaded translations are unnecessary. We're talking about tens to
+hundreds of wasted KB.
+
+The other is related to runtime performance: generating the formatters are an
+expensive operation.
+
+On Globalize, we wanted to do something analogous to templating engines, which
+can precompile templates during build time for optimal performance at runtime.
+So, applications can get the smallest and fastest custom tailored bundle.
+
+By smallest, I mean avoiding the inclusion of unnecessary code and data. No
+unnecessary translation messages, no unnecessary CLDR data, so no bandwidth is
+wasted.
+
+By fastest, I mean having all formatters (number, currency, datetime, relative
+time, etc) generated at build time. So, no CPU clock cycles are wasted on the
+client.
+
+### Solution
+
+We've worked to get tools to do all that automatically. So, let me show you an
+example application using Globalize and its static compiler configured on
+webpack.
+
+Please, note Globalize is unopinionated and its goal is to empower users to use
+it the way they want. But, for obvious reasons, this example is very
+opinionated. If you don't use webpack, don't worry. You should be able to
+reproduce this in the tool of your preference. Globalize and its compiler are
+pure JavaScript, so am sure it's possible to wrap it on a different tool. Also,
+note that this example uses CommonJS but Globalize also supports AMD.
+
+~~~ examples/app-npm-webpack
+
+In this example, we've created two running environments.
+
+For development, our goal was that coding was
+- declarative, the default locale is set automatically, the data is loaded
+  automatically.
+- optimized for fast live reload, use plaing Globalize where formatters are
+  generated dynamically, no need for compiling formatters here, so we get faster
+  refreshs.
+
+For production, our goal was to generate precompiled code for optimal
+performance. It runs the Globalize compiler on our source code to figure out
+the minimum set of data and modules we need and it generates the precompiled
+formatters for the supported locales.
+
+In the setup we're using here, it outputs one JavaScript file for all the
+external libraries, one for all our application, and one for the precompiled
+formatters.
+
+Again, this is a setup we wanted for the example, this could be completely
+customized for your own needs.
+
+Show built sizes, it's not even gzipped. Show one of the precompiled JS.
+
+The precompiled stuff: it's smart enough to reuse formatters. For example,
+dateformatter and currencyformatter reuses numberformatter and so on.
+
+~~~ Example - BTC as currency code
+
+Remember the bitcoin case I've mentioned, let's see what it would take in
+order to get that working
+
+~~~ Example - React.js
+
+
+~~~ Example - ECMA-402 + Globalize
+~~~ Translation Table
+~~~ How easy it is to create new features / new functionalities
+
+~~~ - allow to amend or enrich data, BTC.
+
+Allowing the developer to control the data loading has an interesting
+consequence. It makes it so easy to amend any content, or even enrich it.
+
+For example, I have recently heard that Kraken is using Globalize, although I
+don't know any of the specifics. All I know that Kraken is a bitcoin trade and
+bitcoin is the popular cryptocurrency and one usecase that came into my mind is
+that unfortunately for them, bitcoin isn't an available currency in CLDR, so
+they would not be able to format bitcoin currencies. But, it's so easy to enrich
+CLDR with the missing data, so the library can re-use all of the existing
+localized currency rules: for example: whether there is a space between the
+symbol and the number and where symbol should be positioned (before or after the
+number).
+
+### Good bye
+~~~ Call for action:
+~~~ - use it (let us know if docs are unclear)
+~~~ - contribute
+
+I welcome you give it Globalize a try, let us know if the docs are unclear. If
+you are already using it and needs additional support, let us know, also feel
+free to jump in and contribute. Recently, Andrew Lunny from Twitter just added a
+new module in Globalize, the unit formatting. So, it's made to be extended.
+
+Help us to improve it.
+
+Thanks
