@@ -6,23 +6,10 @@ Internationalization is the process that provides users with a localized experie
 
 ## Get started
 
-Clone this repository:
-
-
+Clone this repository and install dependencies:
 ```bash
 git clone 'git@github.com:rxaviers/globalize-modern-apps.git'
+npm install
 ```
 
-Install the [bower](http://bower.io/) packages if you haven't before. These should be done as global installs:
-
-```bash
-npm install -g bower # once
-```
-
-Then install the dependencies (reveal.js and highlight.js) by running bower:
-
-```
-bower install
-```
-
-Point your browser to ./index.html .
+Point your browser to `./index.html`.
