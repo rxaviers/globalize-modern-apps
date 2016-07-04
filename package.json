@@ -4,6 +4,6 @@
   "dependencies": {
     "highlight.js": "isagalaev/highlight.js",
     "jquery": "2.x",
-    "reveal.js": "2.6.2"
+    "reveal.js": "3.3.0"
   }
 }
