@@ -9,7 +9,7 @@ Internationalization is the process that provides users with a localized experie
 Clone this repository and install dependencies:
 ```bash
 git clone 'git@github.com:rxaviers/globalize-modern-apps.git'
-bower install
+npm install
 ```
 
 Point your browser to `./index.html`.
